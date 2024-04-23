@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1052499361875472889}
   - component: {fileID: 8214506431416768395}
+  - component: {fileID: 4505818316543326689}
   m_Layer: 0
   m_Name: GoalGenerator
   m_TagString: Untagged
@@ -45,3 +46,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalAsset: {fileID: 3959961445917462486, guid: d37d5d180f5619b489de5c544917f6cf, type: 3}
+--- !u!65 &4505818316543326689
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378803928026305041}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 1, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
