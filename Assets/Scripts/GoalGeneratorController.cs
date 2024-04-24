@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoalGeneratorController : MonoBehaviour
 {
+    [SerializeField] private LayerMask floorLayerMask;
     [SerializeField] private Goal goalAsset;
     private Goal goal;
     private BoxCollider validArea;
@@ -16,9 +17,7 @@ public class GoalGeneratorController : MonoBehaviour
     public Vector3 getNextGoalPosition()
     {
         RaycastHit hit;
-        if(
-            Physics.Raycast(RandomPointInBounds(validArea.bounds),Vector3.down, out hit,float.MaxValue)
-            )
+        if(Physics.Raycast(RandomPointInBounds(validArea.bounds),Vector3.down, out hit,float.MaxValue, floorLayerMask))
         {
             return hit.point;
         }
