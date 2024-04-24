@@ -19,7 +19,11 @@ public class GoalGeneratorController : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(RandomPointInBounds(validArea.bounds),Vector3.down, out hit,float.MaxValue, floorLayerMask))
         {
-            return hit.point;
+            if (hit.normal.Equals(Vector3.up))
+            {
+                return hit.point;
+            }
+            Debug.LogWarning("Donde cayó el rayo estaba en pendiente");
         }
 
         Debug.LogWarning("No se encontró donde poner una portería, lanzando otro rayo");
