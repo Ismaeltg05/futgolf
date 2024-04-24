@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class GoalGeneratorController : MonoBehaviour
 {
+    [SerializeField] private GoalController goalController;
     [SerializeField] private LayerMask floorLayerMask;
-    [SerializeField] private Goal goalAsset;
-    private Goal goal;
-    private BoxCollider validArea;
+    [SerializeField] private BoxCollider generateArea;
+
     void Start()
     {
-        validArea = GetComponent<BoxCollider>();
-        goal = Instantiate(goalAsset,getNextGoalPosition(),Quaternion.identity,null);
+        changeGoalPosition();
     }
 
-    public Vector3 getNextGoalPosition()
+    public void changeGoalPosition()
+    {
+        goalController.transform.position = getNextGoalPosition();
+    }
+    private Vector3 getNextGoalPosition()
     {
         RaycastHit hit;
-        if(Physics.Raycast(RandomPointInBounds(validArea.bounds),Vector3.down, out hit,float.MaxValue, floorLayerMask))
+        if(Physics.Raycast(RandomPointInBounds(generateArea.bounds),Vector3.down, out hit,float.MaxValue, floorLayerMask))
         {
             if (hit.normal.Equals(Vector3.up))
             {
@@ -26,7 +29,7 @@ public class GoalGeneratorController : MonoBehaviour
             Debug.LogWarning("Donde cayó el rayo estaba en pendiente");
         }
 
-        Debug.LogWarning("No se encontró donde poner una portería, lanzando otro rayo");
+        Debug.LogWarning("No se encontró donde poner una portería ¿Has puesto un suelo con su layermask?, lanzando otro rayo");
         return getNextGoalPosition();
     }
 

@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3501816781734936970}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6847748450461487758}
+  m_Father: {fileID: 7552668070674216853}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!108 &3654797107889170711
 Light:
@@ -94,6 +94,74 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &4586354288266416327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7552668070674216853}
+  - component: {fileID: 6158006398914302833}
+  - component: {fileID: 5693605465354282740}
+  m_Layer: 0
+  m_Name: Goal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7552668070674216853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586354288266416327}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7317349563768629094}
+  m_Father: {fileID: 6847748450461487758}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6158006398914302833
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586354288266416327}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 20, z: 5}
+  m_Center: {x: 0, y: 5, z: 0}
+--- !u!114 &5693605465354282740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586354288266416327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa59fbf83ba1ae47bed30ed5de45de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GoalArea: {fileID: 6158006398914302833}
 --- !u!1 &6826876991314123496
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,9 +172,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6847748450461487758}
   - component: {fileID: 3773521109166223770}
-  - component: {fileID: 3959961445917462486}
+  - component: {fileID: 6442603678005515760}
   m_Layer: 0
-  m_Name: Goal
+  m_Name: GoalGenerationController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +193,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7317349563768629094}
+  - {fileID: 7552668070674216853}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3773521109166223770
@@ -147,9 +215,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 20, z: 5}
+  m_Size: {x: 20, y: 1, z: 20}
   m_Center: {x: 0, y: 5, z: 0}
---- !u!114 &3959961445917462486
+--- !u!114 &6442603678005515760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,6 +226,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6826876991314123496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa59fbf83ba1ae47bed30ed5de45de7, type: 3}
+  m_Script: {fileID: 11500000, guid: 0047d632a0f074743994506920f795d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goalController: {fileID: 5693605465354282740}
+  floorLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  generateArea: {fileID: 3773521109166223770}
