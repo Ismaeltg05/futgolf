@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &135271947 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1680659864195588988, guid: 8a83e04f987df234ca7073e5d028935c, type: 3}
+  m_PrefabInstance: {fileID: 792343555296618894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &156037169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305,6 +316,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 949ceff9de18541429c6f4c44ee1861e, type: 3}
+--- !u!114 &1056208545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7142194666786846178, guid: 8a83e04f987df234ca7073e5d028935c, type: 3}
+  m_PrefabInstance: {fileID: 792343555296618894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1514567178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7359389389884010850, guid: 8a83e04f987df234ca7073e5d028935c, type: 3}
+  m_PrefabInstance: {fileID: 792343555296618894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1818867127
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +443,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1983347453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8612832941686157755, guid: 8a83e04f987df234ca7073e5d028935c, type: 3}
+  m_PrefabInstance: {fileID: 792343555296618894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2039336708
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,9 +634,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4261943448858619772, guid: 8a83e04f987df234ca7073e5d028935c, type: 3}
+      propertyPath: _PlayerScoresText.Array.data[0]
+      value: 
+      objectReference: {fileID: 1983347453}
+    - target: {fileID: 4261943448858619772, guid: 8a83e04f987df234ca7073e5d028935c, type: 3}
+      propertyPath: _PlayerScoresText.Array.data[1]
+      value: 
+      objectReference: {fileID: 135271947}
+    - target: {fileID: 4261943448858619772, guid: 8a83e04f987df234ca7073e5d028935c, type: 3}
+      propertyPath: _PlayerScoresText.Array.data[2]
+      value: 
+      objectReference: {fileID: 1514567178}
+    - target: {fileID: 4261943448858619772, guid: 8a83e04f987df234ca7073e5d028935c, type: 3}
+      propertyPath: _PlayerScoresText.Array.data[3]
+      value: 
+      objectReference: {fileID: 1056208545}
     - target: {fileID: 6510975022426962927, guid: 8a83e04f987df234ca7073e5d028935c, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523126399243494068, guid: 8a83e04f987df234ca7073e5d028935c, type: 3}
+      propertyPath: m_Name
+      value: PlayersScore
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
