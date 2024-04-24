@@ -26,10 +26,10 @@ public class GoalGeneratorController : MonoBehaviour
             {
                 return hit.point;
             }
-            Debug.LogWarning("Donde cay0 el rayo estaba en pendiente");
+            Debug.LogWarning("Donde cayó el rayo estaba en pendiente");
         }
 
-        Debug.LogWarning("No se encontr0 donde poner una porter1a ¿Has puesto un suelo con su layermask?, lanzando otro rayo");
+        Debug.LogWarning("No se encontró donde poner una portería ¿Has puesto un suelo con su layermask?, lanzando otro rayo");
         return getNextGoalPosition();
     }
 
