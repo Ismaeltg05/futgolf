@@ -10,7 +10,7 @@ public class ScoreTable : MonoBehaviour
     
     void Update()
     {
-        
+       
 
     }
 }
