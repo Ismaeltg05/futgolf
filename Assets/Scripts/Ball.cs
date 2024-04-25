@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -10,7 +9,7 @@ public class Ball : MonoBehaviour
 
     public static Transform position;
 
-    public static float force;
+    [SerializeField] public static float force;
 
     [SerializeField] private float speed;
 
@@ -38,13 +37,17 @@ public class Ball : MonoBehaviour
             force += 1;
             }
         }
-        if(Input.GetKeyUp(KeyCode.Space))
+        else if(force > 0)
+        {
+            force -= 1;
+        }
+        if(Input.GetKeyDown("e"))
         {
             Shoot();
-            force = 0;
         }
         }
-    
+
+            
     private void OnCollisionEnter (Collision collision)
     {
         if(collision.gameObject.CompareTag("Ground"))
