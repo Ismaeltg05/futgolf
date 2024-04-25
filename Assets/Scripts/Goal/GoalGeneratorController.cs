@@ -17,10 +17,19 @@ public class GoalGeneratorController : MonoBehaviour
     }
     private Vector3 getNextGoalPosition()
     {
+
         RaycastHit hit;
+        int attemp = 0;
         do
         {
             Physics.Raycast(RandomPointInBounds(generateArea.bounds), Vector3.down, out hit, float.MaxValue, floorLayerMask);
+            attemp++;
+            if (attemp > 100)
+            {
+                Debug.LogError("No se encuentran lugares ¿Has configurado bien?");
+                return Vector3.zero;
+            }
+            
         }while (hit.Equals(null) || !hit.normal.Equals(Vector3.up));
 
         return hit.point;
