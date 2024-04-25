@@ -14,6 +14,8 @@ public class Ball : MonoBehaviour
 
     [SerializeField] private float speed;
 
+    private bool quiet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +33,6 @@ public class Ball : MonoBehaviour
     {
         speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
         
-        if(speed < 1)
-        {
         if(Input.GetKey(KeyCode.Space))
         {
             if(force <= 200)
@@ -46,7 +46,6 @@ public class Ball : MonoBehaviour
             force = 0;
         }
         }
-    }
     
     private void OnCollisionEnter (Collision collision)
     {
