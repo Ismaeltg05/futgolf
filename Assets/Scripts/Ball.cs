@@ -6,15 +6,13 @@ public class Ball : MonoBehaviour
     private Rigidbody rbspeed;
     public Transform target;
 
-    public Transform effect;
+    //public Transform effect;
 
     public static Transform position;
 
     public static float force;
 
     [SerializeField] private float speed;
-
-    private bool quiet;
 
     // Start is called before the first frame update
     void Start()
