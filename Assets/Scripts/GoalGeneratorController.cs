@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GoalGeneratorController : MonoBehaviour
@@ -20,17 +18,12 @@ public class GoalGeneratorController : MonoBehaviour
     private Vector3 getNextGoalPosition()
     {
         RaycastHit hit;
-        if(Physics.Raycast(RandomPointInBounds(generateArea.bounds),Vector3.down, out hit,float.MaxValue, floorLayerMask))
+        do
         {
-            if (hit.normal.Equals(Vector3.up))
-            {
-                return hit.point;
-            }
-            Debug.LogWarning("Donde cayó el rayo estaba en pendiente");
-        }
+            Physics.Raycast(RandomPointInBounds(generateArea.bounds), Vector3.down, out hit, float.MaxValue, floorLayerMask);
+        }while (hit.Equals(null) || !hit.normal.Equals(Vector3.up));
 
-        Debug.LogWarning("No se encontró donde poner una portería ¿Has puesto un suelo con su layermask?, lanzando otro rayo");
-        return getNextGoalPosition();
+        return hit.point;
     }
 
     public static Vector3 RandomPointInBounds(Bounds bounds)
