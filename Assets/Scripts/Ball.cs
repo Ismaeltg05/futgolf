@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -27,24 +26,34 @@ public class Ball : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
         
+        if(speed < 0.5)
+        {
+            rbspeed.constraints = RigidbodyConstraints.FreezeAll;
+        }
         if(Input.GetKey(KeyCode.Space))
         {
+            rbspeed.constraints = RigidbodyConstraints.None;
             if(force <= 200)
             {
             force += 1;
             }
         }
-        if(Input.GetKeyUp(KeyCode.Space))
+        else if(force > 0)
+        {
+            force -= 1;
+        }
+        if(Input.GetKeyDown("e"))
         {
             Shoot();
-            force = 0;
+            //rbspeed.constraints = RigidbodyConstraints.None;
         }
         }
-    
+
+            
     private void OnCollisionEnter (Collision collision)
     {
         if(collision.gameObject.CompareTag("Ground"))
