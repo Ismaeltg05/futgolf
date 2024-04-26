@@ -15,6 +15,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private float speed;
 
     [SerializeField] private TurnManager turnManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,16 +49,17 @@ public class Ball : MonoBehaviour
             {
             force += 1;
             }
+        
+            else if(force > 0)
+            {
+                force -= 1;
+            }
+            if(Input.GetKeyDown("e"))
+            {
+                Shoot();
+                shooted = true;
+            }
         }
-        else if(force > 0)
-        {
-            force -= 1;
-        }
-        if(Input.GetKeyDown("e"))
-        {
-            Shoot();
-            shooted = true;
-        }
-        }
+    }
 
 }
