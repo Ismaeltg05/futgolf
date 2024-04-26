@@ -11,9 +11,9 @@ public class ThrowableController : MonoBehaviour
         Launch();
     }
 
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        if (transform.position.y < -10)
+        if (!collision.gameObject.CompareTag("Ground"))
         {
             Launch();
         }
