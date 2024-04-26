@@ -21,7 +21,7 @@ public class Ball : MonoBehaviour
         position = GetComponent<Transform>();
         rbspeed= GetComponent<Rigidbody>();
         turnManager.StartTurn();
-        
+        rbspeed.constraints = RigidbodyConstraints.FreezeAll;
     }
     private void Shoot()
     {
@@ -30,19 +30,20 @@ public class Ball : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
         
         if(speed < 0.5 && shooted)
         {
+            //turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             rbspeed.constraints = RigidbodyConstraints.FreezeAll;
             turnManager.EndTurn();
             shooted = false;
         }
         if(Input.GetKey(KeyCode.Space))
         { 
-            rbspeed.constraints = RigidbodyConstraints.None;
+            turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             if(force <= 200)
             {
             force += 1;
