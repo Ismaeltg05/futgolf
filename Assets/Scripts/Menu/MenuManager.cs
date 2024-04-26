@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField] private int _NumSceneLoad;
     public void NewGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(_NumSceneLoad);
     }
     public void Exit()
     {
         Application.Quit();
     }
+    
 }
