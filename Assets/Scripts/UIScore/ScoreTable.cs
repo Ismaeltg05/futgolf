@@ -8,9 +8,6 @@ public class ScoreTable : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI[] _PlayerScoresText = new TextMeshProUGUI[4];
     
-    void Update()
-    {
-       
 
-    }
+    
 }
