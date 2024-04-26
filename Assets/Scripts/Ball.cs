@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
 
     public static Transform position;
 
-    [SerializeField] public static float force;
+    public static float force;
 
     [SerializeField] private float speed;
 
@@ -26,12 +26,17 @@ public class Ball : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
         
+        if(speed < 0.5)
+        {
+            rbspeed.constraints = RigidbodyConstraints.FreezeAll;
+        }
         if(Input.GetKey(KeyCode.Space))
         {
+            rbspeed.constraints = RigidbodyConstraints.None;
             if(force <= 200)
             {
             force += 1;
@@ -44,6 +49,7 @@ public class Ball : MonoBehaviour
         if(Input.GetKeyDown("e"))
         {
             Shoot();
+            //rbspeed.constraints = RigidbodyConstraints.None;
         }
         }
 
