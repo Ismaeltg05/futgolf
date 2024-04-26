@@ -4,7 +4,7 @@ public class TurnManager : MonoBehaviour
 {
     public GameObject[] players;
     public int currentPlayerIndex = 0;
-    public GameObject[] camera;
+    public GameObject[] ghost;
 
     void Start()
     {
@@ -14,15 +14,15 @@ public class TurnManager : MonoBehaviour
     public void StartTurn()
     {
         //Activate current player
-        //players[currentPlayerIndex].SetActive(true);
-        camera[currentPlayerIndex].SetActive(true);
+        players[currentPlayerIndex].SetActive(true);
+        ghost[currentPlayerIndex].SetActive(false);
     }
 
     public void EndTurn()
     {
         //Deactivate current player
-        //players[currentPlayerIndex].SetActive(false);
-        camera[currentPlayerIndex].SetActive(false);
+        players[currentPlayerIndex].SetActive(false);
+        ghost[currentPlayerIndex].SetActive(true    );
 
         //Move to next player
         currentPlayerIndex=(currentPlayerIndex+1)%players.Length;
