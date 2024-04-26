@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
     private Rigidbody rbspeed;
     public Transform target;
     //public Transform effect;
+    private bool shooted = false;
 
     public static Transform position;
 
@@ -14,12 +15,14 @@ public class Ball : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Slider slider;
 
+    [SerializeField] private TurnManager turnManager;
     // Start is called before the first frame update
     void Start()
     {
         position = GetComponent<Transform>();
         rbspeed= GetComponent<Rigidbody>();
         slider.maxValue = 200;
+        turnManager.StartTurn();
     }
     private void Shoot()
     {
@@ -32,12 +35,14 @@ public class Ball : MonoBehaviour
     {
         speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
         
-        if(speed < 0.5)
+        if(speed < 0.5 && shooted)
         {
             rbspeed.constraints = RigidbodyConstraints.FreezeAll;
+            turnManager.EndTurn();
+            shooted = false;
         }
         if(Input.GetKey(KeyCode.Space))
-        {
+        { 
             rbspeed.constraints = RigidbodyConstraints.None;
             if(force <= 200)
             {
@@ -52,19 +57,8 @@ public class Ball : MonoBehaviour
         if(Input.GetKeyDown("e"))
         {
             Shoot();
-            //rbspeed.constraints = RigidbodyConstraints.None;
+            shooted = true;
         }
         }
 
-            
-    private void OnCollisionEnter (Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Ground"))
-        {
-            if(speed > 0)
-            {
-            
-            }
-        }
-    }
 }
