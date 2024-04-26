@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ball : MonoBehaviour
 {
     private Rigidbody rbspeed;
     public Transform target;
-
     //public Transform effect;
     private bool shooted = false;
 
@@ -13,6 +13,7 @@ public class Ball : MonoBehaviour
     public static float force;
 
     [SerializeField] private float speed;
+    [SerializeField] private Slider slider;
 
     [SerializeField] private TurnManager turnManager;
     // Start is called before the first frame update
@@ -20,8 +21,8 @@ public class Ball : MonoBehaviour
     {
         position = GetComponent<Transform>();
         rbspeed= GetComponent<Rigidbody>();
+        slider.maxValue = 200;
         turnManager.StartTurn();
-        
     }
     private void Shoot()
     {
@@ -52,6 +53,7 @@ public class Ball : MonoBehaviour
         {
             force -= 1;
         }
+        slider.value = force;
         if(Input.GetKeyDown("e"))
         {
             Shoot();
