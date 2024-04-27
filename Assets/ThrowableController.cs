@@ -5,6 +5,7 @@ using UnityEngine;
 public class ThrowableController : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private MainMenuGoalController mainMenuGoalController;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class ThrowableController : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Ground"))
         {
+            mainMenuGoalController.generateParticles(transform.position, -rb.velocity);
             Launch();
         }
     }
