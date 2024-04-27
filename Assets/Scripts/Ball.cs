@@ -16,6 +16,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private Slider slider;
 
     [SerializeField] private TurnManager turnManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class Ball : MonoBehaviour
         rbspeed= GetComponent<Rigidbody>();
         slider.maxValue = 200;
         turnManager.StartTurn();
+        rbspeed.constraints = RigidbodyConstraints.FreezeAll;
     }
     private void Shoot()
     {
@@ -31,34 +33,35 @@ public class Ball : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
         
         if(speed < 0.5 && shooted)
         {
+            //turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             rbspeed.constraints = RigidbodyConstraints.FreezeAll;
             turnManager.EndTurn();
             shooted = false;
         }
         if(Input.GetKey(KeyCode.Space))
         { 
-            rbspeed.constraints = RigidbodyConstraints.None;
+            turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             if(force <= 200)
             {
             force += 1;
             }
+        
+            else if(force > 0)
+            {
+                force -= 1;
+            }
+            if(Input.GetKeyDown("e"))
+            {
+                Shoot();
+                shooted = true;
+            }
         }
-        else if(force > 0)
-        {
-            force -= 1;
-        }
-        slider.value = force;
-        if(Input.GetKeyDown("e"))
-        {
-            Shoot();
-            shooted = true;
-        }
-        }
+    }
 
 }
