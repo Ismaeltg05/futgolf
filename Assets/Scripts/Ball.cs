@@ -17,11 +17,14 @@ public class Ball : MonoBehaviour
     [SerializeField] private TurnManager turnManager;
     private bool charge = false;
 
+    private SphereRaycast sphereRaycast;
+
     // Start is called before the first frame update
     void Start()
     {
         position = GetComponent<Transform>();
         rbspeed= GetComponent<Rigidbody>();
+        sphereRaycast = GetComponent<SphereRaycast>();
         turnManager.StartTurn();
         rbspeed.constraints = RigidbodyConstraints.FreezeAll;
     }
@@ -34,9 +37,10 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
         
-        if(speed < 0.5 && shooted)
+        if(speed < 0.5 && shooted && sphereRaycast.ground)
         {
             rbspeed.constraints = RigidbodyConstraints.FreezeAll;
             turnManager.EndTurn();
@@ -66,15 +70,14 @@ public class Ball : MonoBehaviour
             force = force;
         }
         if(Input.GetKey("e"))
+        {
+            if(shooted == false)
             {
-                if(shooted == false)
-                {
-                    turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                    Shoot();
-                    shooted = true;
-                    force = 0;
-                }
+                turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                Shoot();
+                shooted = true;
+                force = 0;
             }
+        }
     }
-
 }
