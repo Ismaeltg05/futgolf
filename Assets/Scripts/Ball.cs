@@ -15,6 +15,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private float speed;
 
     [SerializeField] private TurnManager turnManager;
+    private bool charge = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,13 +44,21 @@ public class Ball : MonoBehaviour
         }
         if(Input.GetKey(KeyCode.Space))
         { 
-            if(force <= 200)
+            if(charge == false)
             {
-            force += 1;
+                force += 1;
+                if(force == 200)
+                {
+                    charge = true;
+                }
             }
-            else if(force > 0)
+            else if (charge ==true)
             {
-                force -= 1;
+                force -=1;
+                if(force <= 0)
+                {
+                    charge = false;
+                }
             }
         }
         if(Input.GetKeyUp(KeyCode.Space))
