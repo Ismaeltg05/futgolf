@@ -25,6 +25,9 @@ public class Ball : MonoBehaviour
         slider.maxValue = 200;
         turnManager.StartTurn();
         rbspeed.constraints = RigidbodyConstraints.FreezeAll;
+
+        
+
     }
     private void Shoot()
     {
@@ -41,7 +44,7 @@ public class Ball : MonoBehaviour
         {
             //turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             rbspeed.constraints = RigidbodyConstraints.FreezeAll;
-            turnManager.EndTurn();
+            
             shooted = false;
         }
         if(Input.GetKey(KeyCode.Space))
