@@ -5,6 +5,7 @@ public class TurnManager : MonoBehaviour
     public GameObject[] players;
     public int currentPlayerIndex = 0;
     public GameObject[] ghost;
+    public int[] points;
 
     void Start()
     {
@@ -26,6 +27,8 @@ public class TurnManager : MonoBehaviour
 
         //Move to next player
         currentPlayerIndex = (currentPlayerIndex + 1) % players.Length;
+        
+
 
         //Start next turn
         StartTurn();
