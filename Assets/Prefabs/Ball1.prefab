@@ -149,8 +149,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  force: 0
   speed: 0
+  slider: {fileID: 0}
   turnManager: {fileID: 0}
+  charge: 0
 --- !u!1 &3338122645461173786
 GameObject:
   m_ObjectHideFlags: 0
