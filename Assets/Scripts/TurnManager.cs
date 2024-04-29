@@ -22,7 +22,7 @@ public class TurnManager : MonoBehaviour
     {
         //Deactivate current player
         players[currentPlayerIndex].SetActive(false);
-        ghost[currentPlayerIndex].SetActive(true    );
+        ghost[currentPlayerIndex].SetActive(true);
 
         //Move to next player
         currentPlayerIndex=(currentPlayerIndex+1)%players.Length;
