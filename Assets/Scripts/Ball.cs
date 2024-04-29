@@ -37,29 +37,35 @@ public class Ball : MonoBehaviour
         
         if(speed < 0.5 && shooted)
         {
-            //turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             rbspeed.constraints = RigidbodyConstraints.FreezeAll;
             turnManager.EndTurn();
             shooted = false;
         }
         if(Input.GetKey(KeyCode.Space))
         { 
-            turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             if(force <= 200)
             {
             force += 1;
             }
-        
             else if(force > 0)
             {
                 force -= 1;
             }
-            if(Input.GetKeyDown("e"))
-            {
-                Shoot();
-                shooted = true;
-            }
         }
+        if(Input.GetKeyUp(KeyCode.Space))
+        {
+            force = force;
+        }
+        if(Input.GetKey("e"))
+            {
+                if(shooted == false)
+                {
+                    turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                    Shoot();
+                    shooted = true;
+                    force = 0;
+                }
+            }
     }
 
 }
