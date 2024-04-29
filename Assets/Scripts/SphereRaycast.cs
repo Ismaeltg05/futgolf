@@ -20,7 +20,7 @@ public class SphereRaycast : MonoBehaviour
         // Lanzamos el SphereCast
         if (Physics.SphereCast(origin, radius, direction, out hit, maxDistance))
         {
-           ground = true;
+            ground = true;
         }
         else 
         {
