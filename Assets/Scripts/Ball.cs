@@ -10,12 +10,13 @@ public class Ball : MonoBehaviour
 
     public static Transform position;
 
-    public static float force;
+    public float force;
 
     [SerializeField] private float speed;
     [SerializeField] private Slider slider;
 
     [SerializeField] private TurnManager turnManager;
+    [SerializeField] private bool charge;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class Ball : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(shoot * force, ForceMode.Impulse);
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
@@ -43,21 +44,31 @@ public class Ball : MonoBehaviour
         if(speed < 0.5 && shooted)
         {
             rbspeed.constraints = RigidbodyConstraints.FreezeAll;
-            
+            turnManager.EndTurn();
             shooted = false;
         }
         if(Input.GetKey(KeyCode.Space))
-        { 
-            if(force <= 200)
+        {
+            if (charge == false)
             {
-            force += 1;
+                force += 1;
+                slider.value = force;
+                if (force == 200)
+                {
+                    charge = true;
+                }
             }
-            else if(force > 0)
+            else
             {
                 force -= 1;
+                slider.value = force;
+                if (force <= 0)
+                {
+                    charge = false;
+                }
             }
         }
-        if(Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             force = force;
         }
@@ -69,6 +80,7 @@ public class Ball : MonoBehaviour
                     Shoot();
                     shooted = true;
                     force = 0;
+                    slider.value = 0;
                 }
             }
     }
