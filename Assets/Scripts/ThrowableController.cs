@@ -6,20 +6,23 @@ public class ThrowableController : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private MainMenuGoalController mainMenuGoalController;
+    ParticleSystem ballParticleSystem;
     // Start is called before the first frame update
     void Start()
     {
+        ballParticleSystem = GetComponent<ParticleSystem>();
         Launch();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (!collision.gameObject.CompareTag("Ground"))
+        if (!other.gameObject.CompareTag("Ground"))
         {
-            mainMenuGoalController.generateParticles(transform.position, -rb.velocity);
-            Launch();
+            transform.LookAt(Camera.main.transform);
+            ballParticleSystem.Emit(50);
+            Invoke("Launch", Random.Range(0f, 2f));
         }
-    }
+    }   
 
     private void Launch()
     {
