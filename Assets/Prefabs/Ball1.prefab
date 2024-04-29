@@ -911,7 +911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761135920eaa99f47b6fc1cd44a47836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 11
+  radius: 1
   maxDistance: 2
   ground: 0
 --- !u!1 &1067152142034540278
