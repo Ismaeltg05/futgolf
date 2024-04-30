@@ -6,10 +6,22 @@ public class TurnManager : MonoBehaviour
     public int currentPlayerIndex = 0;
     public GameObject[] ghost;
     public int[] points;
+    public string[] playersName;
+
+
 
     void Start()
     {
+        playersName = new string[players.Length];
+
+        for (int i = 0; i < playersName.Length; i++)
+        {
+            playersName[i] = "Player" + i.ToString();
+        }
+
+
         StartTurn();
+        points = new int[players.Length];
     }
 
     public void StartTurn()

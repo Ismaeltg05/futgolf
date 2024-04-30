@@ -37,6 +37,7 @@ public class Ball : MonoBehaviour
     {
         Vector3 shoot = (target.position - this.transform.position).normalized;
         GetComponent<Rigidbody>().AddForce(shoot * force, ForceMode.Impulse);
+        turnManager.points[turnManager.currentPlayerIndex] += 10;
     }
 
     
