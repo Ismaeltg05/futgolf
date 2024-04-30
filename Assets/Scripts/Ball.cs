@@ -16,14 +16,16 @@ public class Ball : MonoBehaviour
     [SerializeField] private Slider slider;
 
     [SerializeField] private TurnManager turnManager;
-    [SerializeField] private bool charge;
+    private bool charge = false;
+
+    private SphereRaycast sphereRaycast;
 
     // Start is called before the first frame update
     void Start()
     {
         position = GetComponent<Transform>();
         rbspeed= GetComponent<Rigidbody>();
-        slider.maxValue = 200;
+        sphereRaycast = GetComponent<SphereRaycast>();
         turnManager.StartTurn();
         rbspeed.constraints = RigidbodyConstraints.FreezeAll;
 
@@ -39,30 +41,29 @@ public class Ball : MonoBehaviour
     
     void FixedUpdate()
     {
+
         speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
         
-        if(speed < 0.5 && shooted)
+        if(speed < 0.5 && shooted && sphereRaycast.ground)
         {
             rbspeed.constraints = RigidbodyConstraints.FreezeAll;
             turnManager.EndTurn();
             shooted = false;
         }
         if(Input.GetKey(KeyCode.Space))
-        {
-            if (charge == false)
+        { 
+            if(charge == false)
             {
                 force += 1;
-                slider.value = force;
-                if (force == 200)
+                if(force == 200)
                 {
                     charge = true;
                 }
             }
-            else
+            else if (charge ==true)
             {
-                force -= 1;
-                slider.value = force;
-                if (force <= 0)
+                force -=1;
+                if(force <= 0)
                 {
                     charge = false;
                 }
@@ -73,16 +74,14 @@ public class Ball : MonoBehaviour
             force = force;
         }
         if(Input.GetKey("e"))
+        {
+            if(shooted == false)
             {
-                if(shooted == false)
-                {
-                    turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                    Shoot();
-                    shooted = true;
-                    force = 0;
-                    slider.value = 0;
-                }
+                turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                Shoot();
+                shooted = true;
+                force = 0;
             }
+        }
     }
-
 }
