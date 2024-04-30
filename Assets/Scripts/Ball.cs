@@ -27,6 +27,7 @@ public class Ball : MonoBehaviour
         rbspeed= GetComponent<Rigidbody>();
         sphereRaycast = GetComponent<SphereRaycast>();
         turnManager.StartTurn();
+        slider.maxValue = 200;
         rbspeed.constraints = RigidbodyConstraints.FreezeAll;
 
         
@@ -55,6 +56,7 @@ public class Ball : MonoBehaviour
             if(charge == false)
             {
                 force += 1;
+                slider.value = force;
                 if(force == 200)
                 {
                     charge = true;
@@ -63,7 +65,8 @@ public class Ball : MonoBehaviour
             else if (charge ==true)
             {
                 force -=1;
-                if(force <= 0)
+                slider.value = force;
+                if (force <= 0)
                 {
                     charge = false;
                 }
@@ -81,6 +84,7 @@ public class Ball : MonoBehaviour
                 Shoot();
                 shooted = true;
                 force = 0;
+                slider.value = force;
             }
         }
     }
