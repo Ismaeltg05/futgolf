@@ -77,7 +77,7 @@ public class Ball : MonoBehaviour
         {
             force = force;
         }
-        if(Input.GetKey("e"))
+        if(Input.GetKeyDown("e"))
         {
             if(shooted == false)
             {
