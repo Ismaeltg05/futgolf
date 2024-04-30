@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "futgolf.sln"
+    "dotnet.defaultSolution": "futgolf.sln",
+    "dotnet.preferCSharpExtension": true
 }
