@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.ParticleSystem;
 
 public class Ball : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Ball : MonoBehaviour
 
     private SphereRaycast sphereRaycast;
 
+    private ParticleSystem particle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +33,7 @@ public class Ball : MonoBehaviour
         slider.maxValue = 200;
         rbspeed.constraints = RigidbodyConstraints.FreezeAll;
 
-        
+        particle = GetComponent<ParticleSystem>();
 
     }
     private void Shoot()
@@ -91,9 +94,9 @@ public class Ball : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "flag")
+        if (other.gameObject.tag == "Hole")
         {
-
+            particle.Emit(100);
         }
     }
 }
