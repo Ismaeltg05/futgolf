@@ -5,6 +5,7 @@ public class GoalGeneratorController : MonoBehaviour
     [SerializeField] private GoalController goalController;
     [SerializeField] private LayerMask floorLayerMask;
     [SerializeField] private BoxCollider generateArea;
+    [SerializeField] private GameObject flag;
 
     void Start()
     {
@@ -31,7 +32,7 @@ public class GoalGeneratorController : MonoBehaviour
             }
             
         }while (hit.Equals(null) || !hit.normal.Equals(Vector3.up));
-
+        flag.transform.position = hit.point;
         return hit.point;
     }
 
