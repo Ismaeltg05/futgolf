@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ScoreTable : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI[] _PlayerScoresText = new TextMeshProUGUI[4];
-    [SerializeField] private TextMeshProUGUI round;
+    [SerializeField] private TextMeshProUGUI roundLabel;
     [SerializeField] private TurnManager _TurnManager;
 
 
@@ -20,7 +20,11 @@ public class ScoreTable : MonoBehaviour
         {
             _PlayerScoresText[i].text = _TurnManager.playersName[i] + ": "+_TurnManager.points[i].ToString();
         }
-        round.text =  "Round"+_TurnManager.round.ToString();
+        
     }
 
+    public void setRoundTo(int round)
+    {
+        roundLabel.text = "Round" + round.ToString();
+    }
 }

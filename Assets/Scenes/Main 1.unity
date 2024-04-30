@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1290,6 +1290,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 493580838}
     - target: {fileID: 8315055831312705005, guid: 098d439f0adebc44a9d679f64e353576, type: 3}
+      propertyPath: roundLabel
+      value: 
+      objectReference: {fileID: 493580838}
+    - target: {fileID: 8315055831312705005, guid: 098d439f0adebc44a9d679f64e353576, type: 3}
       propertyPath: _TurnManager
       value: 
       objectReference: {fileID: 1569661623}
@@ -1303,6 +1307,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6960721262916442316, guid: 098d439f0adebc44a9d679f64e353576, type: 3}
   m_PrefabInstance: {fileID: 885122527}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &885122529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8315055831312705005, guid: 098d439f0adebc44a9d679f64e353576, type: 3}
+  m_PrefabInstance: {fileID: 885122527}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67491323dfc684342aeb6e626cf5c06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,7 +2015,8 @@ MonoBehaviour:
   - {fileID: 820418172}
   points: 
   playersName: []
-  round: 1
+  turnsCount: 0
+  scoreTable: {fileID: 885122529}
 --- !u!4 &1569661624
 Transform:
   m_ObjectHideFlags: 0
