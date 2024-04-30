@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/MainMenuGoalController.cs.meta
-guid: 8ad4fc7266c9a8241a3494a8d9cd4a57
-========
-guid: 761135920eaa99f47b6fc1cd44a47836
->>>>>>>> main:Assets/Scripts/SphereRaycast.cs.meta
+guid: cd431fc56a9058140902982233894edf
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
