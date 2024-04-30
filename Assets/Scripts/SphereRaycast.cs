@@ -5,8 +5,10 @@ public class SphereRaycast : MonoBehaviour
     [SerializeField] private float radius = 1f;
     [SerializeField] private float maxDistance = 10f;
 
+    [SerializeField] private TurnManager turnManager;
+
     public bool ground;
-    
+
     void Update()
     {
         // Definimos el origen del SphereCast como el centro de la esfera
@@ -21,6 +23,7 @@ public class SphereRaycast : MonoBehaviour
         if (Physics.SphereCast(origin, radius, direction, out hit, maxDistance))
         {
             ground = true;
+            turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().AddForce(turnManager.players[turnManager.currentPlayerIndex].GetComponent<Transform>().position.normalized * -1,ForceMode.Force);
         }
         else 
         {
