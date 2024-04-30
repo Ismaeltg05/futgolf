@@ -14,7 +14,12 @@ public class TurnManager : MonoBehaviour
 
     void Start()
     {
-        playersName =new string[]{ "a","AA","aaa","AAAAAAA"};
+        playersName = new string[players.Length];
+
+        for (int i = 0; i < playersName.Length; i++)
+        {
+            playersName[i] = players[i].name;
+        }
         
         points = new int[players.Length];
 
