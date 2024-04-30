@@ -25,6 +25,6 @@ public class ScoreTable : MonoBehaviour
 
     public void setRoundTo(int round)
     {
-        roundLabel.text = "Round" + round.ToString();
+        roundLabel.text = "Round " + round.ToString();
     }
 }

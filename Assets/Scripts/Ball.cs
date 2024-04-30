@@ -26,6 +26,7 @@ public class Ball : MonoBehaviour
         position = GetComponent<Transform>();
         rbspeed= GetComponent<Rigidbody>();
         sphereRaycast = GetComponent<SphereRaycast>();
+        turnManager.StartTurn();
         slider.maxValue = 200;
         rbspeed.constraints = RigidbodyConstraints.FreezeAll;
 
@@ -86,6 +87,13 @@ public class Ball : MonoBehaviour
                 force = 0;
                 slider.value = force;
             }
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "flag")
+        {
+
         }
     }
 }
