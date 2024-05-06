@@ -20,7 +20,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private bool barIncreasing = true;
 
     private ParticleSystem particle;
-    [SerializeField] private GameObject End;
+    [SerializeField] private GameObject endScreen;
 
     private float stoppedTime = 1;
 
@@ -50,7 +50,7 @@ public class Ball : MonoBehaviour
 
         speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
         
-        if(shooted && speed < 0.05 && Physics.Raycast(transform.position,Vector3.down))
+        if(shooted && speed < 0.2 && Physics.Raycast(transform.position,Vector3.down,1f))
         {
             if(stoppedTime <= 0 )
             {
@@ -111,7 +111,7 @@ public class Ball : MonoBehaviour
         if (other.gameObject.tag == "Hole")
         {
             
-            End.SetActive(true);
+            endScreen.SetActive(true);
             Time.timeScale = 0f;
         }
     }
