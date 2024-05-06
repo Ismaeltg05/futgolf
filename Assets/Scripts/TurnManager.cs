@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    private GameObject[] players;
+    [SerializeField] private GameObject[] players;
     private int currentPlayerIndex = 0;
     public GameObject[] ghost;
     private int[] points;
