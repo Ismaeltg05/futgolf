@@ -48,7 +48,7 @@ public class Ball : MonoBehaviour
 
         speed = Mathf.RoundToInt(rb.velocity.magnitude * 3600 / 50000);
 
-        if (shooted && speed < 0.2 && Physics.Raycast(transform.position, Vector3.down, 1f))
+        if (shooted && speed < 0.1 && Physics.Raycast(transform.position, Vector3.down, 15f))
         {
             if (stoppedTime <= 0)
             {
