@@ -30,8 +30,8 @@ public class GoalGeneratorController : MonoBehaviour
                 Debug.LogError("No se encuentran lugares ¿Has configurado bien?");
                 return Vector3.zero;
             }
-            
-        }while (hit.Equals(null) || !hit.normal.Equals(Vector3.up));
+
+        } while (hit.Equals(null) || !hit.normal.Equals(Vector3.up));
         flag.transform.position = hit.point;
         return hit.point;
     }

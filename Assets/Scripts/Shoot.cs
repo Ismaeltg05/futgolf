@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
-{ 
+{
     private float y;
     private float z;
 
@@ -14,10 +14,10 @@ public class Shoot : MonoBehaviour
 
         Vector3 playerPos = turnManager.GetCurrentPlayer().transform.position;
 
-        transform.position = new Vector3(playerPos.x,playerPos.y+2,playerPos.z);
-        
-        transform.Rotate(new Vector3(0,y,z));
+        transform.position = new Vector3(playerPos.x, playerPos.y + 2, playerPos.z);
+
+        transform.Rotate(new Vector3(0, y, z));
         //transform.rotation = Quaternion.Euler(90,y,z);
-        
+
     }
 }

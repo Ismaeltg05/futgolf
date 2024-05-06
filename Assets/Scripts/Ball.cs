@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.ParticleSystem;
 
 public class Ball : MonoBehaviour
 {
-    private Rigidbody rbspeed;
+    private Rigidbody rb;
     public Transform target;
     //public Transform effect;
     private bool shooted = false;
@@ -28,10 +27,10 @@ public class Ball : MonoBehaviour
     void Start()
     {
         position = GetComponent<Transform>();
-        rbspeed= GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         turnManager.StartTurn();
         slider.maxValue = 200;
-        rbspeed.constraints = RigidbodyConstraints.FreezeAll;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
 
         particle = GetComponent<ParticleSystem>();
 
@@ -43,46 +42,46 @@ public class Ball : MonoBehaviour
         turnManager.AddPointsToCurrentPlayer(10);
     }
 
-    
+
     void Update()
     {
 
-        speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
-        
-        if(shooted && speed < 0.2 && Physics.Raycast(transform.position,Vector3.down,1f))
+        speed = Mathf.RoundToInt(rb.velocity.magnitude * 3600 / 50000);
+
+        if (shooted && speed < 0.2 && Physics.Raycast(transform.position, Vector3.down, 1f))
         {
-            if(stoppedTime <= 0 )
+            if (stoppedTime <= 0)
             {
-                rbspeed.constraints = RigidbodyConstraints.FreezeAll;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
                 turnManager.EndTurn();
                 shooted = false;
 
                 stoppedTime = 1;
             }
             else
-            { 
+            {
                 stoppedTime -= Time.deltaTime;
             }
-            
+
         }
         else
         {
-           stoppedTime = 1;
+            stoppedTime = 1;
         }
 
 
-        if(Input.GetKey(KeyCode.Space) && !shooted)
-        { 
-            if(barIncreasing)
+        if (Input.GetKey(KeyCode.Space) && !shooted)
+        {
+            if (barIncreasing)
             {
                 force += Time.deltaTime * 100;
                 slider.value = force;
-                if(force == 200)
+                if (force >= slider.maxValue)
                 {
                     barIncreasing = false;
                 }
             }
-            else 
+            else
             {
                 force -= Time.deltaTime * 100;
                 slider.value = force;
@@ -92,10 +91,10 @@ public class Ball : MonoBehaviour
                 }
             }
         }
-        
-        if(Input.GetKeyDown("e"))
+
+        if (Input.GetKeyDown("e"))
         {
-            if(!shooted)
+            if (!shooted)
             {
                 turnManager.GetCurrentPlayer().GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 Shoot();
@@ -109,7 +108,7 @@ public class Ball : MonoBehaviour
     {
         if (other.gameObject.tag == "Hole")
         {
-            
+
             endScreen.SetActive(true);
             Time.timeScale = 0f;
         }

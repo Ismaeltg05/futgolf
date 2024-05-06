@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ScoreTable : MonoBehaviour
 {
@@ -18,9 +15,9 @@ public class ScoreTable : MonoBehaviour
     {
         for (int i = 0; i < _TurnManager.numberOfPlayers(); i++)
         {
-            _PlayerScoresText[i].text = _TurnManager.playersName[i] + ": "+_TurnManager.getNthPlayerPoints(i).ToString();
+            _PlayerScoresText[i].text = _TurnManager.playersName[i] + ": " + _TurnManager.getNthPlayerPoints(i).ToString();
         }
-        
+
     }
 
     public void setRoundTo(int round)
