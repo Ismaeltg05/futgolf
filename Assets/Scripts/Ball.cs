@@ -29,7 +29,6 @@ public class Ball : MonoBehaviour
     {
         position = GetComponent<Transform>();
         rbspeed= GetComponent<Rigidbody>();
-        sphereRaycast = GetComponent<SphereRaycast>();
         turnManager.StartTurn();
         slider.maxValue = 200;
         rbspeed.constraints = RigidbodyConstraints.FreezeAll;
