@@ -17,7 +17,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private Slider slider;
 
     [SerializeField] private TurnManager turnManager;
-    private bool barIncreasing = true;
+    [SerializeField] private bool barIncreasing = true;
 
     private SphereRaycast sphereRaycast;
 
@@ -60,7 +60,7 @@ public class Ball : MonoBehaviour
         { 
             if(barIncreasing)
             {
-                force += Time.deltaTime;
+                force += Time.deltaTime*100;
                 slider.value = force;
                 if(force == 200)
                 {
