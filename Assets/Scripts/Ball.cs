@@ -19,10 +19,10 @@ public class Ball : MonoBehaviour
     [SerializeField] private TurnManager turnManager;
     [SerializeField] private bool barIncreasing = true;
 
-    private SphereRaycast sphereRaycast;
-
     private ParticleSystem particle;
     [SerializeField] private GameObject End;
+
+    private float stoppedTime = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -50,17 +50,33 @@ public class Ball : MonoBehaviour
 
         speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
         
-        if(speed < 0.5 && shooted && sphereRaycast.ground)
+        if(shooted && speed < 0.05 && Physics.Raycast(transform.position,Vector3.down))
         {
-            rbspeed.constraints = RigidbodyConstraints.FreezeAll;
-            turnManager.EndTurn();
-            shooted = false;
+            if(stoppedTime <= 0 )
+            {
+                rbspeed.constraints = RigidbodyConstraints.FreezeAll;
+                turnManager.EndTurn();
+                shooted = false;
+
+                stoppedTime = 1;
+            }
+            else
+            { 
+                stoppedTime -= Time.deltaTime;
+            }
+            
         }
+        else
+        {
+           stoppedTime = 1;
+        }
+
+
         if(Input.GetKey(KeyCode.Space) && !shooted)
         { 
             if(barIncreasing)
             {
-                force += Time.deltaTime*100;
+                force += Time.deltaTime * 100;
                 slider.value = force;
                 if(force == 200)
                 {
@@ -69,7 +85,7 @@ public class Ball : MonoBehaviour
             }
             else 
             {
-                force -= Time.deltaTime;
+                force -= Time.deltaTime * 100;
                 slider.value = force;
                 if (force <= 0)
                 {
