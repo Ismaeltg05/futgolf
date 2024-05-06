@@ -22,6 +22,7 @@ public class Ball : MonoBehaviour
     private SphereRaycast sphereRaycast;
 
     private ParticleSystem particle;
+    [SerializeField] private GameObject End;
 
     // Start is called before the first frame update
     void Start()
@@ -76,10 +77,7 @@ public class Ball : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            force = force;
-        }
+        
         if(Input.GetKeyDown("e"))
         {
             if(shooted == false)
@@ -96,7 +94,9 @@ public class Ball : MonoBehaviour
     {
         if (other.gameObject.tag == "Hole")
         {
-            particle.Emit(100);
+            
+            End.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }
