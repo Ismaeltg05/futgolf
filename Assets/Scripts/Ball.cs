@@ -17,7 +17,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private Slider slider;
 
     [SerializeField] private TurnManager turnManager;
-    private bool charge = false;
+    private bool barIncreasing = true;
 
     private SphereRaycast sphereRaycast;
 
@@ -56,31 +56,31 @@ public class Ball : MonoBehaviour
             turnManager.EndTurn();
             shooted = false;
         }
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKey(KeyCode.Space) && !shooted)
         { 
-            if(charge == false)
+            if(barIncreasing)
             {
-                force += 1;
+                force += Time.deltaTime;
                 slider.value = force;
                 if(force == 200)
                 {
-                    charge = true;
+                    barIncreasing = false;
                 }
             }
             else 
             {
-                force -=1;
+                force -= Time.deltaTime;
                 slider.value = force;
                 if (force <= 0)
                 {
-                    charge = false;
+                    barIncreasing = true;
                 }
             }
         }
         
         if(Input.GetKeyDown("e"))
         {
-            if(shooted == false)
+            if(!shooted)
             {
                 turnManager.GetCurrentPlayer().GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 Shoot();
