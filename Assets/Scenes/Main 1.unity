@@ -5072,6 +5072,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd431fc56a9058140902982233894edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 1
+  maxDistance: 10
+  turnManager: {fileID: 0}
+  ground: 0
 --- !u!1001 &564047856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11170,6 +11174,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd431fc56a9058140902982233894edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 1
+  maxDistance: 10
+  turnManager: {fileID: 0}
+  ground: 0
 --- !u!1 &1464394156 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4509651036089165902, guid: ae643a88249dd8f49841a97f52aacf90, type: 3}
@@ -11391,14 +11399,13 @@ MonoBehaviour:
   - {fileID: 331738664}
   - {fileID: 1464168171}
   - {fileID: 1944439603}
-  currentPlayerIndex: 0
   ghost:
   - {fileID: 1296506687}
   - {fileID: 696038896}
   - {fileID: 1809036060}
   - {fileID: 820418172}
-  points: 
-  playersName: []
+  playersName:
+  - 
   turnsCount: 0
   scoreTable: {fileID: 8315055830561898546}
 --- !u!4 &1569661624
@@ -16464,6 +16471,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd431fc56a9058140902982233894edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 1
+  maxDistance: 10
+  turnManager: {fileID: 0}
+  ground: 0
 --- !u!1 &1975967839 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 168331508443794114, guid: ae643a88249dd8f49841a97f52aacf90, type: 3}
@@ -21726,6 +21737,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd431fc56a9058140902982233894edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 1
+  maxDistance: 10
+  turnManager: {fileID: 0}
+  ground: 0
 --- !u!114 &2313249268738035232 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6582948147089214534, guid: 1e13b15c2f6ccaf4bb961dbd2e6cc72b, type: 3}
