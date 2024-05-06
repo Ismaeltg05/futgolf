@@ -45,7 +45,7 @@ public class Ball : MonoBehaviour
     }
 
     
-    void FixedUpdate()
+    void Update()
     {
 
         speed = Mathf.RoundToInt(rbspeed.velocity.magnitude * 3600 /50000);
@@ -67,7 +67,7 @@ public class Ball : MonoBehaviour
                     charge = true;
                 }
             }
-            else if (charge ==true)
+            else 
             {
                 force -=1;
                 slider.value = force;
