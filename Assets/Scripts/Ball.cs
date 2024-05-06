@@ -40,7 +40,7 @@ public class Ball : MonoBehaviour
     {
         Vector3 shoot = (target.position - this.transform.position).normalized;
         GetComponent<Rigidbody>().AddForce(shoot * force, ForceMode.Impulse);
-        turnManager.points[turnManager.currentPlayerIndex] += 10;
+        turnManager.AddPointsToCurrentPlayer(10);
     }
 
     
@@ -84,7 +84,7 @@ public class Ball : MonoBehaviour
         {
             if(shooted == false)
             {
-                turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                turnManager.GetCurrentPlayer().GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 Shoot();
                 shooted = true;
                 force = 0;

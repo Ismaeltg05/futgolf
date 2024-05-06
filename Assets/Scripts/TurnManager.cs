@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    public GameObject[] players;
-    public int currentPlayerIndex = 0;
+    private GameObject[] players;
+    private int currentPlayerIndex = 0;
     public GameObject[] ghost;
-    public int[] points;
+    private int[] points;
     public string[] playersName ;
     public int turnsCount = 0;
     public ScoreTable scoreTable;
@@ -32,7 +32,7 @@ public class TurnManager : MonoBehaviour
         scoreTable.setRoundTo((int)Mathf.Floor(turnsCount/players.Length));
         //Activate current player
         
-        players[currentPlayerIndex].SetActive(true);
+        GetCurrentPlayer().SetActive(true);
         ghost[currentPlayerIndex].SetActive(false);
     }
 
@@ -47,5 +47,35 @@ public class TurnManager : MonoBehaviour
 
         StartTurn();
 
+    }
+
+    public GameObject GetCurrentPlayer()
+    {
+        return players[currentPlayerIndex];
+    }
+
+    public GameObject GetNthPlayer(int n)
+    {
+        return players[n];
+    }
+
+    public int numberOfPlayers()
+    {
+        return players.Length;
+    }
+
+    public int GetCurrentPlayerPoints()
+    {
+        return points[currentPlayerIndex];
+    }
+
+    public int getNthPlayerPoints(int n)
+    {
+        return points[n];
+    }
+
+    public void AddPointsToCurrentPlayer(int n)
+    {
+        points[currentPlayerIndex] += n;
     }
 }

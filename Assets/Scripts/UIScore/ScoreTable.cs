@@ -16,9 +16,9 @@ public class ScoreTable : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < _TurnManager.players.Length; i++)
+        for (int i = 0; i < _TurnManager.numberOfPlayers(); i++)
         {
-            _PlayerScoresText[i].text = _TurnManager.playersName[i] + ": "+_TurnManager.points[i].ToString();
+            _PlayerScoresText[i].text = _TurnManager.playersName[i] + ": "+_TurnManager.getNthPlayerPoints(i).ToString();
         }
         
     }

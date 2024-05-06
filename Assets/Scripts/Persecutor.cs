@@ -4,8 +4,8 @@ public class Persecutor : MonoBehaviour
 {
     [SerializeField] private TurnManager turnManager;
 
-    [SerializeField] private int ghost;
-    // Start is called before the first frame update
+    [SerializeField] private int ghost; //?????
+
     void Start()
     {
         
@@ -14,6 +14,6 @@ public class Persecutor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(turnManager.players[ghost].GetComponent<Transform>().position.x,turnManager.players[ghost].GetComponent<Transform>().position.y,turnManager.players[ghost].GetComponent<Transform>().position.z);
+        transform.position = turnManager.GetNthPlayer(ghost).transform.position;
     }
 }

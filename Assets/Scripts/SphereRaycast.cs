@@ -23,7 +23,7 @@ public class SphereRaycast : MonoBehaviour
         if (Physics.SphereCast(origin, radius, direction, out hit, maxDistance))
         {
             ground = true;
-            turnManager.players[turnManager.currentPlayerIndex].GetComponent<Rigidbody>().AddForce(turnManager.players[turnManager.currentPlayerIndex].GetComponent<Transform>().position.normalized * -1,ForceMode.Force);
+            turnManager.GetCurrentPlayer().GetComponent<Rigidbody>().AddForce(turnManager.GetCurrentPlayer().transform.position.normalized * -1,ForceMode.Force);
         }
         else 
         {
