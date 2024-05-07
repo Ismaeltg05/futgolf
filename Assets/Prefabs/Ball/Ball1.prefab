@@ -5457,7 +5457,7 @@ GameObject:
   - component: {fileID: 8896680921078641472}
   - component: {fileID: 6367867841931051078}
   m_Layer: 3
-  m_Name: Fijate
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
