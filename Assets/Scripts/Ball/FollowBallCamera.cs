@@ -6,11 +6,10 @@ using UnityEngine;
 public class FollowBallCamera : MonoBehaviour
 {
 
-    public GameObject tPlayer;
-    public Transform tFollowTarget;
+    private GameObject tPlayer;
+    private Transform tFollowTarget;
     [SerializeField] private CinemachineFreeLook vcam;
     [SerializeField] private TurnManager turnManager;
-    
 
     void Update()
     {
