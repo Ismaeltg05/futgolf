@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,12 @@ public class Ball : MonoBehaviour
 
     public static Transform position;
 
-    public float force;
+    [SerializeField] private float launchForce = 0;
+    [SerializeField] private float launchPitch = 2;
+    [SerializeField] private float launchRoll = 0;
+    [SerializeField] private float launchYaw = 0;
+    [SerializeField] private float paraboleTime = 0;
+    [SerializeField] private Vector3 launchPosition;
 
     [SerializeField] private float speed;
     [SerializeField] private Slider slider;
@@ -22,7 +28,16 @@ public class Ball : MonoBehaviour
     [SerializeField] private GameObject endScreen;
 
     private float stoppedTime = 1;
+    [SerializeField] private LayerMask floorLayer;
 
+    enum State
+    {
+        Idle,
+        Parabolic,
+        Moving
+    }
+
+    private State state = State.Idle;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +52,11 @@ public class Ball : MonoBehaviour
     }
     private void Shoot()
     {
-        Vector3 shoot = (target.position - this.transform.position).normalized;
-        GetComponent<Rigidbody>().AddForce(shoot * force, ForceMode.Impulse);
+        state = State.Parabolic;
         turnManager.AddPointsToCurrentPlayer(10);
+        launchPosition = transform.position;
+        rb.useGravity = false;
+        rb.velocity = Vector3.zero;
     }
 
 
@@ -48,7 +65,7 @@ public class Ball : MonoBehaviour
 
         speed = Mathf.RoundToInt(rb.velocity.magnitude * 3600 / 50000);
 
-        if (shooted && speed < 0.1 && Physics.Raycast(transform.position, Vector3.down, 15f))
+        if (shooted && state == State.Moving && speed < 0.1 && Physics.Raycast(transform.position, Vector3.down, 15f))
         {
             if (stoppedTime <= 0)
             {
@@ -74,18 +91,18 @@ public class Ball : MonoBehaviour
         {
             if (barIncreasing)
             {
-                force += Time.deltaTime * 100;
-                slider.value = force;
-                if (force >= slider.maxValue)
+                launchForce += Time.deltaTime * 100;
+                slider.value = launchForce;
+                if (launchForce >= slider.maxValue)
                 {
                     barIncreasing = false;
                 }
             }
             else
             {
-                force -= Time.deltaTime * 100;
-                slider.value = force;
-                if (force <= 0)
+                launchForce -= Time.deltaTime * 100;
+                slider.value = launchForce;
+                if (launchForce <= 0)
                 {
                     barIncreasing = true;
                 }
@@ -99,9 +116,39 @@ public class Ball : MonoBehaviour
                 turnManager.GetCurrentPlayer().GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 Shoot();
                 shooted = true;
-                force = 0;
-                slider.value = force;
             }
+        }
+
+        switch (state)
+        {
+            case State.Parabolic:
+
+                Vector2 parablePosition2d = new Vector2(
+                    launchForce * Mathf.Cos(launchPitch) * paraboleTime,
+                    launchForce * Mathf.Sin(launchPitch) * paraboleTime - 0.5f * - Physics.gravity.y * Mathf.Pow(paraboleTime, 2)
+                    );
+                Vector2 vDirection = new Vector2(
+                       launchForce * Mathf.Cos(launchPitch),
+                       launchForce * Mathf.Sin(launchPitch) - (-Physics.gravity.y * paraboleTime)
+                    
+                                                                             );
+
+                Vector3 yRotatedParablePosition3d = new Vector3(parablePosition2d.x * Mathf.Sin(launchYaw) , parablePosition2d.y, parablePosition2d.x * Mathf.Cos(launchYaw)) + launchPosition;
+                
+
+                transform.position = yRotatedParablePosition3d;
+
+                paraboleTime += Time.deltaTime;
+
+                if (vDirection.y<0 && Physics.Raycast(transform.position, Vector3.down,vDirection.y+10))
+                {
+                    rb.useGravity = true;
+                    state = State.Moving;
+                    rb.velocity = new Vector3(vDirection.x * Mathf.Sin(launchYaw), vDirection.y, vDirection.x * Mathf.Cos(launchYaw));
+                }
+                break;
+            default:
+                break;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -113,4 +160,5 @@ public class Ball : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
+
 }
