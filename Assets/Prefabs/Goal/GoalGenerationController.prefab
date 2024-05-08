@@ -4938,7 +4938,7 @@ GameObject:
   - component: {fileID: 5693605465354282740}
   m_Layer: 0
   m_Name: Goal
-  m_TagString: Untagged
+  m_TagString: Hole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5047,8 +5047,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 257.93, y: 1, z: 330.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 257.93, y: 1, z: 161.23534}
+  m_Center: {x: 0, y: 0, z: 110.569374}
 --- !u!114 &6442603678005515760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5064,7 +5064,7 @@ MonoBehaviour:
   goalController: {fileID: 5693605465354282740}
   floorLayerMask:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 128
   generateArea: {fileID: 3773521109166223770}
   flag: {fileID: 2986731300814085044}
 --- !u!1001 &6015097074083322238

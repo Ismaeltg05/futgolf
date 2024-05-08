@@ -130,7 +130,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -151,12 +151,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  force: 0
+  launchForce: 0
+  launchPitch: 2
+  launchRoll: 0
+  launchYaw: 0
+  paraboleTime: 0
+  launchPosition: {x: 0, y: 0, z: 0}
   speed: 0
   slider: {fileID: 0}
   turnManager: {fileID: 0}
   barIncreasing: 1
   endScreen: {fileID: 0}
+  floorLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  state: 0
 --- !u!96 &837291871764900513
 TrailRenderer:
   serializedVersion: 3

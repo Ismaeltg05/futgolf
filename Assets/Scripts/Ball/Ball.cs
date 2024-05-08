@@ -37,7 +37,7 @@ public class Ball : MonoBehaviour
         Moving
     }
 
-    private State state = State.Idle;
+    [SerializeField]  private State state = State.Idle;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +55,7 @@ public class Ball : MonoBehaviour
         state = State.Parabolic;
         turnManager.AddPointsToCurrentPlayer(10);
         launchPosition = transform.position;
+        paraboleTime = 0;
         rb.useGravity = false;
         rb.velocity = Vector3.zero;
     }
@@ -84,6 +85,14 @@ public class Ball : MonoBehaviour
         else
         {
             stoppedTime = 1;
+        }
+
+        if (Input.GetKey(KeyCode.A)){
+            transform.Rotate(Vector3.forward,Time.deltaTime * 60f,Space.Self);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Rotate(Vector3.forward,- Time.deltaTime * 60f, Space.Self);
         }
 
 
@@ -122,30 +131,21 @@ public class Ball : MonoBehaviour
         switch (state)
         {
             case State.Parabolic:
-
-                Vector2 parablePosition2d = new Vector2(
-                    launchForce * Mathf.Cos(launchPitch) * paraboleTime,
-                    launchForce * Mathf.Sin(launchPitch) * paraboleTime - 0.5f * - Physics.gravity.y * Mathf.Pow(paraboleTime, 2)
-                    );
-                Vector2 vDirection = new Vector2(
-                       launchForce * Mathf.Cos(launchPitch),
-                       launchForce * Mathf.Sin(launchPitch) - (-Physics.gravity.y * paraboleTime)
-                    
-                                                                             );
-
-                Vector3 yRotatedParablePosition3d = new Vector3(parablePosition2d.x * Mathf.Sin(launchYaw) , parablePosition2d.y, parablePosition2d.x * Mathf.Cos(launchYaw)) + launchPosition;
-                
-
-                transform.position = yRotatedParablePosition3d;
-
                 paraboleTime += Time.deltaTime;
 
-                if (vDirection.y<0 && Physics.Raycast(transform.position, Vector3.down,vDirection.y+10))
+
+                Vector2 v0 = new Vector2(-launchForce * Mathf.Cos(launchPitch), launchForce * Mathf.Sin(launchPitch));
+                Vector2 v = new Vector2(v0.x,v0.y + Physics.gravity.y * paraboleTime);
+
+                transform.Translate(new Vector3(0f,v.y,v.x) * Time.deltaTime);
+                
+                if(Physics.Raycast(transform.position, new Vector3(0f, v.y, v.x), 5f))
                 {
-                    rb.useGravity = true;
                     state = State.Moving;
-                    rb.velocity = new Vector3(vDirection.x * Mathf.Sin(launchYaw), vDirection.y, vDirection.x * Mathf.Cos(launchYaw));
+                    rb.velocity = rb.velocity = transform.TransformDirection(new Vector3(0f, v.y, v.x));
+                    rb.useGravity = true;
                 }
+
                 break;
             default:
                 break;
@@ -160,5 +160,7 @@ public class Ball : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
+
+  
 
 }
