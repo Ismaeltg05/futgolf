@@ -28,7 +28,12 @@ public class Ball : MonoBehaviour
     [SerializeField] private GameObject endScreen;
 
     private float stoppedTime = 1;
-    [SerializeField] private LayerMask floorLayer;
+    [SerializeField] private static LayerMask floorLayer;
+
+    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private int LRpps = 5; //points per second
+    [SerializeField] private int LRTime = 20;
+    private int lineRendPoints;
 
     enum State
     {
@@ -49,6 +54,11 @@ public class Ball : MonoBehaviour
 
         particle = GetComponent<ParticleSystem>();
 
+        lineRendPoints = LRpps * LRTime;
+        lineRenderer.positionCount = lineRendPoints;
+
+        launchPosition = transform.position;
+
     }
     private void Shoot()
     {
@@ -63,6 +73,14 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
+        var points = new Vector3[lineRendPoints];
+
+        for (int i = 0; i < lineRendPoints; i++)
+        {
+            float t = i / (float)LRpps;
+            points[i] = launchPosition + transform.TransformDirection(ParablePosAtT(t));
+        }
+        lineRenderer.SetPositions(points);
 
         speed = Mathf.RoundToInt(rb.velocity.magnitude * 3600 / 50000);
 
@@ -133,18 +151,14 @@ public class Ball : MonoBehaviour
             case State.Parabolic:
                 paraboleTime += Time.deltaTime;
 
-
-                Vector2 v0 = new Vector2(-launchForce * Mathf.Cos(launchPitch), launchForce * Mathf.Sin(launchPitch));
-                Vector2 v = new Vector2(v0.x,v0.y + Physics.gravity.y * paraboleTime);
-
-                transform.Translate(new Vector3(0f,v.y,v.x) * Time.deltaTime);
+                transform.position = launchPosition + transform.TransformDirection(ParablePosAtT(paraboleTime));
                 
-                if(Physics.Raycast(transform.position, new Vector3(0f, v.y, v.x), 5f))
+                /*if(Physics.Raycast(transform.position, new Vector3(0f, v.y, v.x), 5f))
                 {
                     state = State.Moving;
                     rb.velocity = rb.velocity = transform.TransformDirection(new Vector3(0f, v.y, v.x));
                     rb.useGravity = true;
-                }
+                }*/
 
                 break;
             default:
@@ -159,6 +173,17 @@ public class Ball : MonoBehaviour
             endScreen.SetActive(true);
             Time.timeScale = 0f;
         }
+    }
+
+    private Vector3 ParablePosAtT(float t)
+    {
+        Vector2 v0 = new Vector2(launchForce * Mathf.Cos(launchPitch), launchForce * Mathf.Sin(launchPitch));
+       
+        return new Vector3(
+            0,
+            v0.y * t + 0.5f* Physics.gravity.y * Mathf.Pow(t,2),
+            v0.x * t
+            );
     }
 
   
