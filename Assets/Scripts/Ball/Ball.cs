@@ -90,6 +90,7 @@ public class Ball : MonoBehaviour
             {
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 turnManager.EndTurn();
+                launchPosition = transform.position;
                 shooted = false;
 
                 stoppedTime = 1;
