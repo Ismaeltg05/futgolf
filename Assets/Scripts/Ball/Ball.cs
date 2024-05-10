@@ -105,12 +105,23 @@ public class Ball : MonoBehaviour
             stoppedTime = 1;
         }
 
-        if (Input.GetKey(KeyCode.A)){
-            transform.Rotate(Vector3.forward,Time.deltaTime * 60f,Space.Self);
+        if (Input.GetKey(KeyCode.A) && launchRoll < 80){
+            launchRoll += Time.deltaTime * 60f;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && launchRoll > -80)
         {
-            transform.Rotate(Vector3.forward,- Time.deltaTime * 60f, Space.Self);
+            launchRoll -= Time.deltaTime * 60f;
+        }
+
+    transform.localEulerAngles = new Vector3(0, -angleFromY(transform.position, Camera.main.transform.position)-90f, launchRoll);
+
+        if (Input.GetKey(KeyCode.W) && launchPitch < Mathf.PI / 2)
+        {
+            launchPitch += Time.deltaTime * 0.5f;
+        }
+        if (Input.GetKey(KeyCode.S) && launchPitch > 0)
+        {
+            launchPitch -= Time.deltaTime * 0.5f;
         }
 
 
@@ -186,6 +197,11 @@ public class Ball : MonoBehaviour
             );
     }
 
+    private float angleFromY(Vector3 a, Vector3 b)
+    {
+        Vector3 v = b - a;
+        return Mathf.Atan2(v.z, v.x) * Mathf.Rad2Deg;
+    }
   
 
 }
