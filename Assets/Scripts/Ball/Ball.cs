@@ -167,7 +167,7 @@ public class Ball : MonoBehaviour
 
                 transform.position = launchPosition + transform.TransformDirection(ParablePosAtT(paraboleTime));
                 
-                if(Physics.Raycast(transform.position,Vector3.down, 5f))
+                if(Physics.Raycast(transform.position, ParablePosAtT(paraboleTime + Time.deltaTime) - ParablePosAtT(paraboleTime), 5f))
                 {
                     state = State.Moving;
                     rb.velocity = rb.velocity = transform.TransformDirection(Vector3.down);
