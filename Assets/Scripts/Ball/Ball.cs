@@ -166,11 +166,14 @@ public class Ball : MonoBehaviour
                 paraboleTime += Time.deltaTime;
 
                 transform.position = launchPosition + transform.TransformDirection(ParablePosAtT(paraboleTime));
-                
-                if(Physics.Raycast(transform.position, ParablePosAtT(paraboleTime + Time.deltaTime) - ParablePosAtT(paraboleTime), 5f))
+
+                Vector3 dir = (ParablePosAtT(paraboleTime + Time.deltaTime) - ParablePosAtT(paraboleTime)).normalized;
+
+
+                if (Physics.Raycast(transform.position,dir, 5f))
                 {
                     state = State.Moving;
-                    rb.velocity = rb.velocity = transform.TransformDirection(Vector3.down);
+                    rb.velocity = transform.TransformDirection(dir) * launchForce;
                     rb.useGravity = true;
                 }
 
