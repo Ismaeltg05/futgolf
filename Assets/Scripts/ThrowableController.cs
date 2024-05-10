@@ -3,7 +3,6 @@ using UnityEngine;
 public class ThrowableController : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private MainMenuGoalController mainMenuGoalController;
     ParticleSystem ballParticleSystem;
     // Start is called before the first frame update
     void Start()

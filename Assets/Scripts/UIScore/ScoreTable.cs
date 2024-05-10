@@ -9,13 +9,21 @@ public class ScoreTable : MonoBehaviour
 
 
 
-
-
     private void Update()
     {
         for (int i = 0; i < _TurnManager.numberOfPlayers(); i++)
         {
-            _PlayerScoresText[i].text = _TurnManager.playersName[i] + ": " + _TurnManager.getNthPlayerPoints(i).ToString();
+            if  (i == _TurnManager.PlayerIndex())
+            {
+                _PlayerScoresText[i].text = _TurnManager.playersName[i] + ": " + _TurnManager.getNthPlayerPoints(i).ToString();
+                _PlayerScoresText[i].color = Color.red;
+            }
+            else
+            {
+                _PlayerScoresText[i].text = _TurnManager.playersName[i] + ": " + _TurnManager.getNthPlayerPoints(i).ToString();
+                _PlayerScoresText[i].color = Color.white;
+            }
+
         }
 
     }
@@ -24,4 +32,6 @@ public class ScoreTable : MonoBehaviour
     {
         roundLabel.text = "Round " + round.ToString();
     }
+    
+    
 }

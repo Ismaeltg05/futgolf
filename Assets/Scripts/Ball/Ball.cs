@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
     private bool shooted = false;
 
     public static Transform position;
-
+    [SerializeField] private GoalGeneratorController goalGeneratorController;
     [SerializeField] private float launchForce = 0;
     [SerializeField] private float launchPitch = 2;
     [SerializeField] private float launchRoll = 0;
@@ -63,7 +63,6 @@ public class Ball : MonoBehaviour
     private void Shoot()
     {
         state = State.Parabolic;
-        turnManager.AddPointsToCurrentPlayer(10);
         launchPosition = transform.position;
         paraboleTime = 0;
         rb.useGravity = false;
@@ -186,9 +185,9 @@ public class Ball : MonoBehaviour
     {
         if (other.gameObject.tag == "Hole")
         {
-
-            endScreen.SetActive(true);
-            Time.timeScale = 0f;
+            
+            turnManager.AddPointsToCurrentPlayer(10);
+            goalGeneratorController.changeGoalPosition();
         }
     }
 

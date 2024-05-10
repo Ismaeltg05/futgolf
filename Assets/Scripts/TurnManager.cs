@@ -63,6 +63,10 @@ public class TurnManager : MonoBehaviour
     {
         return players.Length;
     }
+    public int PlayerIndex()
+    {
+        return currentPlayerIndex;
+    }
 
     public int GetCurrentPlayerPoints()
     {
