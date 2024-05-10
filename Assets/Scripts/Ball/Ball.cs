@@ -105,7 +105,7 @@ public class Ball : MonoBehaviour
             stoppedTime = 1;
         }
 
-        if (Input.GetKey(KeyCode.A) && launchRoll < 80){
+        if (Input.GetKey(KeyCode.A) && launchRoll < 80) {
             launchRoll += Time.deltaTime * 60f;
         }
         if (Input.GetKey(KeyCode.D) && launchRoll > -80)
@@ -113,7 +113,9 @@ public class Ball : MonoBehaviour
             launchRoll -= Time.deltaTime * 60f;
         }
 
-    transform.localEulerAngles = new Vector3(0, -angleFromY(transform.position, Camera.main.transform.position)-90f, launchRoll);
+        if (!shooted) { 
+            transform.localEulerAngles = new Vector3(0, -angleFromY(transform.position, Camera.main.transform.position) - 90f, launchRoll);
+        }
 
         if (Input.GetKey(KeyCode.W) && launchPitch < Mathf.PI / 2)
         {
@@ -164,12 +166,12 @@ public class Ball : MonoBehaviour
 
                 transform.position = launchPosition + transform.TransformDirection(ParablePosAtT(paraboleTime));
                 
-                /*if(Physics.Raycast(transform.position, new Vector3(0f, v.y, v.x), 5f))
+                if(Physics.Raycast(transform.position,Vector3.down, 5f))
                 {
                     state = State.Moving;
-                    rb.velocity = rb.velocity = transform.TransformDirection(new Vector3(0f, v.y, v.x));
+                    rb.velocity = rb.velocity = transform.TransformDirection(Vector3.down);
                     rb.useGravity = true;
-                }*/
+                }
 
                 break;
             default:
