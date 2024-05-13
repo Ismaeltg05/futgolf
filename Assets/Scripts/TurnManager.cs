@@ -12,6 +12,7 @@ public class TurnManager : MonoBehaviour
 
 
 
+
     void Start()
     {
         playersName = new string[players.Length];
@@ -28,12 +29,16 @@ public class TurnManager : MonoBehaviour
 
     public void StartTurn()
     {
+        
         turnsCount++;
         scoreTable.setRoundTo((int)Mathf.Floor(turnsCount / players.Length));
         //Activate current player
 
         GetCurrentPlayer().SetActive(true);
         ghost[currentPlayerIndex].SetActive(false);
+        
+            
+        
     }
 
     public void EndTurn()
@@ -81,5 +86,13 @@ public class TurnManager : MonoBehaviour
     public void AddPointsToCurrentPlayer(int n)
     {
         points[currentPlayerIndex] += n;
+    }
+    public int[] getPoints()
+    {
+        return points;
+    }
+    public string getPlayer(int playerIndex)
+    {
+        return playersName[playerIndex];
     }
 }

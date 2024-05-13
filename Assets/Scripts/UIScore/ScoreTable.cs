@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ScoreTable : MonoBehaviour
 {
@@ -31,6 +32,21 @@ public class ScoreTable : MonoBehaviour
     public void setRoundTo(int round)
     {
         roundLabel.text = "Round " + round.ToString();
+    }
+    public string getWinner()
+    {
+        int greater = 0;
+        int WinnerIndex = 0;
+        for (int i = 0; i < _TurnManager.getPoints().Length; i++)
+        {
+            if(_TurnManager.getPoints()[i] >= greater)
+            {
+                greater = _TurnManager.getPoints()[i];
+                WinnerIndex = i;
+            }
+        }
+       
+        return _TurnManager.getPlayer(WinnerIndex);
     }
     
     
