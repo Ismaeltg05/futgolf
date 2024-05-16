@@ -106,7 +106,7 @@ public class Ball : MonoBehaviour
             stoppedTime = 1;
         }
 
-        lineRenderer.setActive(!shooted);
+        lineRenderer.SetActive(!shooted);
 
         if (Input.GetKey(KeyCode.A) && launchRoll < 80) {
             launchRoll += Time.deltaTime * 60f;
