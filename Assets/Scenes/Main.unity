@@ -1457,6 +1457,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6088459050398522737, guid: 1e3d26e46012b424e8f8b9805ad9eb34, type: 3}
+--- !u!114 &1461029268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 567739976943270597, guid: 51ee02721576d0347b110a5919e13076, type: 3}
+  m_PrefabInstance: {fileID: 154723784831971970}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1464394156 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4509651036089165902, guid: ae643a88249dd8f49841a97f52aacf90, type: 3}
@@ -2284,8 +2295,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1288512732051330025, guid: 51ee02721576d0347b110a5919e13076, type: 3}
       propertyPath: time
-      value: 180
+      value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1288512732051330025, guid: 51ee02721576d0347b110a5919e13076, type: 3}
+      propertyPath: ScoreTable
+      value: 
+      objectReference: {fileID: 7364818800475945468}
+    - target: {fileID: 1288512732051330025, guid: 51ee02721576d0347b110a5919e13076, type: 3}
+      propertyPath: WinnerPlayer
+      value: 
+      objectReference: {fileID: 1461029268}
     - target: {fileID: 1311290161207744906, guid: 51ee02721576d0347b110a5919e13076, type: 3}
       propertyPath: m_Name
       value: UIPlayer

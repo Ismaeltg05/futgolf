@@ -9,8 +9,14 @@ public class TimeCountDown : MonoBehaviour
     [SerializeField] private float time = 60;
     [SerializeField] private TextMeshProUGUI textMeshProUGUI;
     [SerializeField] private GameObject WinScreen;
+    [SerializeField] private TextMeshProUGUI WinnerPlayer;
+    [SerializeField] private ScoreTable ScoreTable;
+
     void Update()
     {
+        
+
+
         if (time > 0)
         {
             time -= Time.deltaTime;
@@ -18,6 +24,7 @@ public class TimeCountDown : MonoBehaviour
         }
         else
         {
+            WinnerPlayer.text = ScoreTable.getWinner();
             WinScreen.SetActive(true);
             Time.timeScale = 0f;
         }
