@@ -62,6 +62,7 @@ public class Ball : MonoBehaviour
     }
     private void Shoot()
     {
+        
         state = State.Parabolic;
         launchPosition = transform.position;
         paraboleTime = 0;
@@ -104,6 +105,8 @@ public class Ball : MonoBehaviour
         {
             stoppedTime = 1;
         }
+
+        lineRenderer.setActive(!shooted);
 
         if (Input.GetKey(KeyCode.A) && launchRoll < 80) {
             launchRoll += Time.deltaTime * 60f;
