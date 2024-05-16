@@ -237,7 +237,7 @@ PrefabInstance:
     - target: {fileID: 7603209668881975587, guid: aba0d8eb08a6b4a49b434f53fcec1cbe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d28ce1b9e26982346ad56159a9d8a0f3, type: 2}
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -591,6 +591,10 @@ PrefabInstance:
       propertyPath: goalGeneratorController
       value: 
       objectReference: {fileID: 274303953}
+    - target: {fileID: 7603209668881975587, guid: aba0d8eb08a6b4a49b434f53fcec1cbe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1049,6 +1053,10 @@ PrefabInstance:
       propertyPath: goalGeneratorController
       value: 
       objectReference: {fileID: 274303953}
+    - target: {fileID: 7603209668881975587, guid: aba0d8eb08a6b4a49b434f53fcec1cbe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1064,7 +1072,6 @@ GameObject:
   m_Component:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
-  - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
@@ -1073,14 +1080,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &963194226
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -1821,6 +1820,10 @@ PrefabInstance:
       propertyPath: goalGeneratorController
       value: 
       objectReference: {fileID: 274303953}
+    - target: {fileID: 7603209668881975587, guid: aba0d8eb08a6b4a49b434f53fcec1cbe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2279,9 +2282,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1288512732051330025, guid: 51ee02721576d0347b110a5919e13076, type: 3}
+      propertyPath: time
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 1311290161207744906, guid: 51ee02721576d0347b110a5919e13076, type: 3}
       propertyPath: m_Name
       value: UIPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214029851330898720, guid: 51ee02721576d0347b110a5919e13076, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1432
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334042533259143313, guid: 51ee02721576d0347b110a5919e13076, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6807989757249123225, guid: 51ee02721576d0347b110a5919e13076, type: 3}
       propertyPath: _TurnManager
