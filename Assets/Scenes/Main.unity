@@ -2295,7 +2295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1288512732051330025, guid: 51ee02721576d0347b110a5919e13076, type: 3}
       propertyPath: time
-      value: 20
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1288512732051330025, guid: 51ee02721576d0347b110a5919e13076, type: 3}
       propertyPath: ScoreTable
@@ -2312,6 +2312,22 @@ PrefabInstance:
     - target: {fileID: 2214029851330898720, guid: 51ee02721576d0347b110a5919e13076, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1432
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689747889528887432, guid: 51ee02721576d0347b110a5919e13076, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f4ff2871f38a114886110a97a15e604, type: 3}
+    - target: {fileID: 6334042533259143313, guid: 51ee02721576d0347b110a5919e13076, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.77904165
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334042533259143313, guid: 51ee02721576d0347b110a5919e13076, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.77904165
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334042533259143313, guid: 51ee02721576d0347b110a5919e13076, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.77904165
       objectReference: {fileID: 0}
     - target: {fileID: 6334042533259143313, guid: 51ee02721576d0347b110a5919e13076, type: 3}
       propertyPath: m_AnchoredPosition.x
