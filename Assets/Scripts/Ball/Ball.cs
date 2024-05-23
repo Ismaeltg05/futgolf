@@ -74,13 +74,17 @@ public class Ball : MonoBehaviour
     void Update()
     {
         var points = new Vector3[lineRendPoints];
+        float lineMagnitude = 0;
 
         for (int i = 0; i < lineRendPoints; i++)
         {
             float t = i / (float)LRpps;
             points[i] = launchPosition + transform.TransformDirection(ParablePosAtT(t));
+            lineMagnitude += Vector3.Distance(points[i], i>0?points[i-1]:Vector3.zero);
         }
         lineRenderer.SetPositions(points);
+        lineRenderer.material.SetTextureScale("_MainTex", new Vector2(lineMagnitude, 1f));
+
 
         speed = Mathf.RoundToInt(rb.velocity.magnitude * 3600 / 50000);
 
